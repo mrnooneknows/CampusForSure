@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <%-include('./partials/head')%>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include('./partials/nav')%>
+    <!-- Add question button -->
+    <a href ="/add/question"><button type="add-question" class="btn btn-primary m-5">Add Question</button></a>
+
+    <!-- Add suggestion button -->
+    <a href="/add/suggestion"><button type="add-suggestion" class="btn btn-primary m-5">Add Suggestion</button></a>
+
+    <!-- latest reviews -->
+    <div class="container my-3">
+      <% if(sugg.length !== 0) { %>
+        <% for(let ind = 0; ind < sugg.length; ind++) { %>
+            <div class="row">
+                <hr>
+                <div class="col-4 col-md-12 reviews">
+                  <a class="single" href="/suggestions/<%= sugg[ind]._id %>" style="text-decoration: none;"><h3><%= sugg[ind].about %></h3></a>
+                    <p><%= sugg[ind].author %></p>
+                    <h6><%= sugg[ind].snippet %></h6>
+                </div>
+                </a>
+                <hr>
+            </div>
+        <% } %>
+      <% } %>
+    </div>
+
+    <%-include('./partials/footer')%>
+
+  </body>
+</html>

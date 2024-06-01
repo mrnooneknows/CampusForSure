@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <%-include('./partials/head')%>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include('./partials/nav')%>
+
+    <div class='container m-4'>
+      <a class="delete" data-doc="<%=sugg._id%>">
+        <button type="submit" class="btn btn-primary">Delete</button>
+      </a>
+    </div>
+
+    <div class="container my-5">
+      <div class="row">
+          <hr>
+          <div class="col-4 col-md-12 reviews">
+              <h3><%= sugg.about %></h3>
+              <p><%= sugg.author %></p>
+              <h4><%= sugg.snippet %></h4>
+              <p><%= sugg.body %></p>
+          </div>
+          <hr>
+      </div>
+    </div>
+    <%-include('./partials/footer')%>
+
+    <script>
+      const trashcan = document.querySelector('a.delete');
+
+      trashcan.addEventListener('click' , (event)=>{
+        const endpoint = `/suggestions/${trashcan.dataset.doc}`;
+
+        fetch(endpoint , {method : 'delete'})
+          .then((response)=> response.json())
+          .then((data)=>{ window.location.href = data.redirect;})
+          .catch((err)=> {console.log(err);})
+      })
+    </script>
+  </body>
+</html>

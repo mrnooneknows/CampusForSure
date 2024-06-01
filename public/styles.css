@@ -1,0 +1,25 @@
+body{
+    background-color: white;
+}
+
+.hero{
+    background-color: #615EFC;
+    text-align: center;
+}
+
+.button{
+    background-color: #343299;
+    color: aliceblue;
+    border: none;
+    border-radius: 2px;
+}
+.button:hover{
+    background-color: rgba(144, 211, 211, 0.2);
+}
+.main-heading , .sub-heading{
+    color:white;
+}
+
+.nav{
+    background-color: #343299;
+}

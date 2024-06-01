@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <%-include('./partials/head')%>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include('./partials/nav')%>
+
+    <!-- latest questions -->
+    <div class="container py-2">
+        <h2 class="Latest-questions py-2">Latest Questions</h3>
+                  <div class="row">
+                    <hr>
+                    <div class="col-4 col-md-12 reviews">
+                        <h3 ><%= ques.question%></h3>
+                        <p><%= ques.author%></p>
+                        <a class="delete" data-doc ="<%=ques._id%>">
+                            <button type="add-suggestion" class="btn btn-primary m-5">Delete</button>
+                        </a>
+                    </div>
+                    <hr>
+                  </div>
+    </div>
+
+    <%-include('./partials/footer')%>
+    <script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener('click' , (event)=>{
+        const endpoint = `/questions/${trashcan.dataset.doc}`;
+
+        fetch(endpoint , {method : 'delete'})
+          .then((response)=> response.json())
+          .then((data)=>{ window.location.href = data.redirect;})
+          .catch((err)=> {console.log(err);})
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+  <%-include('./partials/head')%>
+  <body>
+    <!-- navigation bar -->
+    <%-include('./partials/nav')%>
+
+    <!-- /*Hero for the page */ -->
+    <div class ="hero">
+        <div class="row justify-content-between">
+            <div class="col-12 justify-content-center py-5">
+              <h1 class="main-heading">Campus for Sure</h1>
+              <h3 class="sub-heading">Enlight the path for your Juniors</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- latest reviews -->
+    <div class="container my-3">
+      <% if(sugg.length !== 0) { %>
+        <% for(let ind = 0; ind < sugg.length && ind < 3; ind++) { %>
+            <div class="row">
+                <hr>
+                <div class="col-4 col-md-12 reviews">
+                  <a class="single" href="/suggestions/<%= sugg[ind]._id %>" style="text-decoration: none;"><h3><%= sugg[ind].about %></h3></a>
+                    <p><%= sugg[ind].author %></p>
+                    <h6><%= sugg[ind].snippet %></h6>
+                </div>
+                </a>
+                <hr>
+            </div>
+        <% } %>
+      <% } %>
+    </div>
+
+    <%-include('./partials/footer')%>
+
+  </body>
+</html>

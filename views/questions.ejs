@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <%-include('./partials/head')%>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include('./partials/nav')%>
+    <!-- Add question button -->
+    <a href ="/add/question"><button type="add-question" class="btn btn-primary m-5">Add Question</button></a>
+
+    <!-- Add suggestion button -->
+    <a href="/add/suggestion"><button type="add-suggestion" class="btn btn-primary m-5">Add Suggestion</button></a>
+
+    <!-- latest questions -->
+    <div class="container py-2">
+        <h2 class="Latest-questions py-2">Latest Questions</h3>
+          <% if(ques.length !== 0) { %>
+            <% for(let ind = 0; ind < ques.length; ind++) { %>
+                  <div class="row justify-content-center">
+                    <hr>
+                    <div class="col-4 col-lg-12 reviews">
+                        <a class="single" href="/questions/<%= ques[ind]._id %>" style="text-decoration: none;"><h5><%= ques[ind].question%></h5></a>
+                        <p><%= ques[ind].author%></p>
+                    </div>
+                    <hr>
+                  </div>
+            <% } %>
+          <% } %>
+    </div>
+
+    <%-include('./partials/footer')%>
+
+  </body>
+</html>
